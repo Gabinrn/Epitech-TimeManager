@@ -1,16 +1,6 @@
 version: '3.8'
 
 services:
-  api:
-    container_name: timemanager-api
-    build: ../theme01/
-    volumes:
-      - ../theme01:/api
-    ports:
-      - "4000:4000"
-    depends_on:
-      - postgres
-
   postgres:
     container_name: timemanager-database
     image: postgres
@@ -24,9 +14,23 @@ services:
       - "5432:5432"
     restart: unless-stopped
 
+  api:
+    container_name: timemanager-api
+    image: ghcr.io/gabinrn/time-manager-api:master
+    volumes : 
+        - ./theme01:/api
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DATA: $POSTGRES_DATA
+    ports:
+      - "4000:4000" 
+    depends_on: 
+      - postgres
+
   front:
     container_name: timemanager-front
-    build: ../webinterface/
+    image: ghcr.io/gabinrn/time-manager-front:master
     volumes:
       - ../webinterface:/app
     ports:
