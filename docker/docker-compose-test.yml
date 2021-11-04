@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api-test:
+    container_name: timemanager-api
+    build: ../theme01/
+    volumes:
+      - ../theme01:/api
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres-test
+    links:
+      - postgres-test
+
+  postgres-test:
+    container_name: timemanager-database
+    image: postgres
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: app_test
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+  
+volumes:
+  postgres:

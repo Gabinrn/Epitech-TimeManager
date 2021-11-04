@@ -1,0 +1,42 @@
+name: Elixir CI
+
+on:
+  push:
+    branches: [ Dashboard ]
+
+jobs:
+
+  build:
+
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Elixir
+      uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+      with:
+        elixir-version: '1.12.2' # Define the elixir version [required]
+        otp-version: '22.3' # Define the OTP version [required]
+    - name: Restore dependencies cache
+      uses: actions/cache@v2
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-
+    - name: Install dependencies
+      run: mix deps.get
+      working-directory: ./theme01
+
+  test:
+
+    name: Test routes
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Running routes test
+      run: echo 'running routes test'
+    - name: Run tests
+      run: docker-compose -f docker-compose-test.yml run --rm api-test sh -c "mix deps.get && mix test"
+      working-directory: ./docker
