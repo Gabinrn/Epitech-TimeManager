@@ -1,6 +1,7 @@
 defmodule AppWeb.UsersView do
   use AppWeb, :view
   alias AppWeb.UsersView
+  alias App.Authentification.Guardian
 
   def render("index.json", %{users: users}) do
     %{data: render_many(users, UsersView, "users.json")}
@@ -14,7 +15,8 @@ defmodule AppWeb.UsersView do
     %{
       id: users.id,
       username: users.username,
-      email: users.email
+      email: users.email,
+      user_role: users.user_role
     }
   end
 end

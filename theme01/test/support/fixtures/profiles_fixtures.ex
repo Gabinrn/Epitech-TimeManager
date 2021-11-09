@@ -1,7 +1,7 @@
-defmodule App.RoutesFixtures do
+defmodule App.ProfilesFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `App.Routes` context.
+  entities via the `App.Profiles` context.
   """
 
   @doc """
@@ -14,7 +14,7 @@ defmodule App.RoutesFixtures do
         email: "some email",
         username: "some username"
       })
-      |> App.Routes.create_users()
+      |> App.Profiles.create_users()
 
     users
   end

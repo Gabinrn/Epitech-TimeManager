@@ -47,6 +47,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Guardian
+config :app, App.Authentification.Guardian,
+  issuer: "app",
+  secret_key: "kCODKgXnz0zhzc2b/K3QD1bIPjztfhDIAbjezRYidaHl+SvsiSbemeZ3EswZT3KR"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

@@ -1,6 +1,5 @@
 defmodule AppWeb.ClockController do
   use AppWeb, :controller
-  import Logger
 
 
   alias App.Clocks
@@ -9,14 +8,13 @@ defmodule AppWeb.ClockController do
 
   action_fallback AppWeb.FallbackController
 
-  def index(conn, _params) do
-    clocks = Clocks.list_clocks()
-    render(conn, "index.json", clocks: clocks)
-  end
+  # def index(conn, _params) do
+  #   clocks = Clocks.list_clocks()
+  #   render(conn, "index.json", clocks: clocks)
+  # end
 
   def create(conn, %{"userID" => userID ,"clock" => clock_params}) do
     clock_params = Map.put(clock_params, "user", userID)
-    Logger.info("AAAAAAAAAAAAAAAAAAAAAAAAc #{inspect(clock_params)}")
     with {:ok, %Clock{} = clock} <- Clocks.create_clock(clock_params) do
       conn
       |> put_status(:created)
@@ -27,7 +25,7 @@ defmodule AppWeb.ClockController do
 
 
   def index(conn, %{"userID" => userID}) do
-    clocks = TimeManager.filtered_clocks!(userID)
+    clocks = TimeManager.filtered_clocks(userID)
     render(conn, "index.json", clock: clocks)
   end
 

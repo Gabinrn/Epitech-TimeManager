@@ -21,4 +21,11 @@ defmodule AppWeb.FallbackController do
     |> put_view(AppWeb.ErrorView)
     |> render(:"404")
   end
+
+  # Guardian
+  def call(conn, {:error, :unauthorized}) do
+    conn
+    |> put_status(:unauthorized)
+    |> render(AppWeb.ErrorView, :"401")
+  end
 end

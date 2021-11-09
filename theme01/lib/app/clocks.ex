@@ -21,6 +21,7 @@ defmodule App.Clocks do
     Repo.all(Clock)
   end
 
+  def get_clock!(user), do: Repo.get!(Clock, user)
   @doc """
   Gets a single clock.
 
@@ -33,7 +34,9 @@ defmodule App.Clocks do
 
       iex> get_clock!(456)
       ** (Ecto.NoResultsError)
-  def get_clock!(user), do: Repo.get!(Clock, user)
+
+
+
 
   Creates a clock.
 
