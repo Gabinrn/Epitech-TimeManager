@@ -5,9 +5,8 @@ defmodule App.TimeManager do
   import Ecto.Query, warn: false
 
   alias App.Repo
-  alias App.TImeManager.User
   alias App.Workingtimes.Workingtime
-  alias App.Routes.Users
+  alias App.Profiles.Users
   alias App.Clocks.Clock
 
   def filtered_times(userID, start, stop) do

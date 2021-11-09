@@ -1,9 +1,9 @@
 defmodule AppWeb.UsersControllerTest do
   use AppWeb.ConnCase
 
-  import App.RoutesFixtures
+  import App.ProfilesFixtures
 
-  alias App.Routes.Users
+  alias App.Profiles.Users
 
   @create_attrs %{
     email: "some email",

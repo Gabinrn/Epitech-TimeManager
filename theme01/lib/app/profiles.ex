@@ -1,12 +1,12 @@
-defmodule App.Routes do
+defmodule App.Profiles do
   @moduledoc """
-  The Routes context.
+  The Users context.
   """
 
   import Ecto.Query, warn: false
   alias App.Repo
 
-  alias App.Routes.Users
+  alias App.Profiles.Users
 
   @doc """
   Returns the list of users.
@@ -33,6 +33,10 @@ defmodule App.Routes do
       ** (Ecto.NoResultsError)
 
   """
+  def get_by_email(email) do
+    Repo.get_by(Users, email: email)
+  end
+
   def get_users!(id), do: Repo.get!(Users, id)
 
   @doc """

@@ -50,7 +50,11 @@ defmodule App.MixProject do
       {:plug, "~> 1.0"},
       {:corsica, "~> 1.1"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:joken, "~> 2.0-rc0"},
+      {:poison, "~> 3.1"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"}
     ]
   end
 

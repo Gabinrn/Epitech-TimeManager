@@ -14,6 +14,10 @@ defmodule AppWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authentifie do
+    plug App.Authentification.Verif
+  end
+
   scope "/", AppWeb do
     pipe_through :browser
 
@@ -24,7 +28,15 @@ defmodule AppWeb.Router do
   scope "/api", AppWeb do
     pipe_through :api
 
-    resources "/users", UsersController, except: [:new, :edit]
+    post "/signup", UsersController, :create
+    post "/signin", UsersController, :signin
+    resources "/users", UsersController, except: [:new, :edit, :create]
+  end
+
+  scope "/api", AppWeb do
+    pipe_through [:api, :authentifie]
+
+
     resources "/workingtimes", WorkingtimeController, only: [:delete, :update]
     get "/workingtimes/:userID", WorkingtimeController, :index
     get "/workingtimes/:userID/:id", WorkingtimeController, :show_custom
