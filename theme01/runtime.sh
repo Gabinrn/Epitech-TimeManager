@@ -1,4 +1,4 @@
 #!/bin/bash
-mix ecto.setup
+mix ecto.reset
 mix ecto.migrate
 mix phx.server

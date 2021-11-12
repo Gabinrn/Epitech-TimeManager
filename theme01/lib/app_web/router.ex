@@ -30,7 +30,6 @@ defmodule AppWeb.Router do
 
     post "/signup", UsersController, :create
     post "/signin", UsersController, :signin
-    resources "/users", UsersController, except: [:new, :edit, :create]
   end
 
   scope "/api", AppWeb do
