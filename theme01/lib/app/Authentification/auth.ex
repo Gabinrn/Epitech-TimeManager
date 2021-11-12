@@ -5,7 +5,7 @@ defmodule App.Authentification.Auth do
   def get_role(conn) do
     case get_token(conn) do
       {:ok, token} ->
-        case App.Token.verify_and_validate(token) do
+        case App.Token.verify_token(token) do
           {:ok, claims} -> claims["role"]
         end
     end
@@ -14,7 +14,7 @@ defmodule App.Authentification.Auth do
   def get_userid(conn) do
     case get_token(conn) do
       {:ok, token} ->
-        case App.Token.verify_and_validate(token) do
+        case App.Token.verify_token(token) do
           {:ok, claims} -> claims["user_id"]
         end
     end
@@ -58,7 +58,7 @@ defmodule App.Authentification.Verif do
   def call(conn, _default) do
     case Auth.get_token(conn) do
       {:ok, token} ->
-        case App.Token.verify_and_validate(token) do
+        case App.Token.verify_token(token) do
           {:ok, claims} ->
             case Auth.verify_token(claims) do
               {:ok} -> Auth.authorized(conn, token)

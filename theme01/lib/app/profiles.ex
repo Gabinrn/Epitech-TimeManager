@@ -34,7 +34,7 @@ defmodule App.Profiles do
 
   """
   def get_by_email(email) do
-    Repo.get_by(Users, email: email)
+    Repo.get_by!(Users, email: email)
   end
 
   def get_users!(id), do: Repo.get!(Users, id)

@@ -53,16 +53,15 @@ defmodule AppWeb.UsersController do
     send_resp(conn, :no_content, "")
   end
 
-  def signin(conn, email, password) do
-    case Comeonin.Bcrypt.check_pass(Profiles.get_by_email(email), password) do
+  def signin(conn, %{"email" => email, "password" => password}) do
+    case Comeonin.Bcrypt.check_pass(Profiles.get_by_email(email), password, hash_key: :hashed_password) do
       {:ok, users} ->
         expire = DateTime.add(DateTime.utc_now(), 36000, :second)
 
         {:ok, token, _claims} =
           Token.generate_and_sign(%{
             "userid" => users.id,
-            "username" => users.username,
-            "role" => users.users_role,
+            "role" => users.user_role,
             "expiry" => expire
           })
 
