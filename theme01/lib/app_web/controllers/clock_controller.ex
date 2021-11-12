@@ -25,8 +25,8 @@ defmodule AppWeb.ClockController do
 
 
   def index(conn, %{"userID" => userID}) do
-    clocks = TimeManager.filtered_clocks(userID)
-    render(conn, "index.json", clock: clocks)
+    times = TimeManager.filtered_clocks(userID)
+    render(conn, "index.json", clocks: times)
   end
 
   def update(conn, %{"id" => id, "clock" => clock_params}) do

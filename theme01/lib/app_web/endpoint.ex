@@ -53,7 +53,7 @@ defmodule AppWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug Corsica,
-       origins: "http://localhost:8081",
+       origins: "http://localhost:8080",
        allow_credentials: true,
        allow_headers: ["Content-Type"],
        log: [
