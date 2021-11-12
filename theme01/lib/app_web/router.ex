@@ -35,7 +35,7 @@ defmodule AppWeb.Router do
   scope "/api", AppWeb do
     pipe_through [:api, :authentifie]
 
-
+    resources "/users", UsersController, except: [:new]
     resources "/workingtimes", WorkingtimeController, only: [:delete, :update]
     get "/workingtimes/:userID", WorkingtimeController, :index
     get "/workingtimes/:userID/:id", WorkingtimeController, :show_custom
