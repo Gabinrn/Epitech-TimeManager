@@ -22,6 +22,6 @@ defmodule App.TimeManager do
   end
 
   def filtered_clocks(id) do
-    Repo.all(from c in Clock, where: c.user == ^id)
+    Repo.all(from c in Clock, where: c.user == ^id and c.status == true)
   end
 end

@@ -28,21 +28,23 @@ defmodule AppWeb.Router do
   scope "/api", AppWeb do
     pipe_through :api
 
-    post "/signup", UsersController, :create
     post "/signin", UsersController, :signin
+    post "/secret_route_nobody_know_to_create_first_user", UsersController, :create
+
   end
 
   scope "/api", AppWeb do
     pipe_through [:api, :authentifie]
 
-    resources "/users", UsersController, except: [:new]
+    get "/allUsers", UsersController, :indexAll
+    resources "/users", UsersController, except: [:new, :edit]
     resources "/workingtimes", WorkingtimeController, only: [:delete, :update]
     get "/workingtimes/:userID", WorkingtimeController, :index
     get "/workingtimes/:userID/:id", WorkingtimeController, :show_custom
     post "/workingtimes/:userID", WorkingtimeController, :create_custom
-    resources "/clocks", ClockController, only: [:show]
     post "/clocks/:userID", ClockController, :create
     get "/clocks/:userID", ClockController, :index
+    resources "/clocks", ClockController, only: [:update]
 
 
   end

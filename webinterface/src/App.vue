@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
   </div>
 </template>
 
@@ -44,31 +45,5 @@
   color: white;
   font-size: 30px;
 }
-
-/* .GridView {
-  width: auto px;
-  display: grid;
-  height: auto;
-  margin: auto auto;
-  grid-row-gap: unset;
-  grid-row: auto;
-  grid-column-gap: 25px;
-  justify-content: center;
-  background-color: #fff;
-  grid-template-columns: auto auto;
-}
-
-.box {
-  padding: 10px;
-  color: #fff;
-  display: flex;
-  font-size: 50px;
-  align-items: center;
-  border-radius: 10px;
-  justify-content: center;
-  font-family: sans-serif;
-  border-block: #333;
-  border: solid;
-} */
 
 </style>

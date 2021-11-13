@@ -8,10 +8,10 @@ defmodule AppWeb.UsersController do
 
   action_fallback AppWeb.FallbackController
 
- #def index(conn, _params) do
-   # users = Profiles.list_users()
-  #  render(conn, "index.json", users: users)
- # end
+ def indexAll(conn, _params) do
+    users = Profiles.list_users()
+    render(conn, "index.json", users: users)
+  end
 
   def index(conn, %{"username" => username, "email" => email}) do
     users = TimeManager.filtered_users(email, username)

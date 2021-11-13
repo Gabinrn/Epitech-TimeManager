@@ -16,9 +16,7 @@ defmodule App.Profiles do
       iex> list_users()
       [%Users{}, ...]
 
-  def list_users do
-    Repo.all(Users)
-  end
+
 
   Gets a single users.
 
@@ -33,6 +31,10 @@ defmodule App.Profiles do
       ** (Ecto.NoResultsError)
 
   """
+  def list_users do
+    Repo.all(Users)
+  end
+
   def get_by_email(email) do
     Repo.get_by!(Users, email: email)
   end
