@@ -57,8 +57,8 @@ export default {
         for (let i = 0; i < (response.data.data).length; i++) {
           let dateEnd = new Date(response.data.data[i].end);
           let dateStart = new Date(response.data.data[i].start);
-          this.end = dateEnd.getHours()
-          this.start = dateStart.getHours()
+          this.end = dateEnd.getHours()- dateEnd.getMinutes()/60
+          this.start = dateStart.getHours()- dateStart.getMinutes()/60
           this.Date.push("Day: " + dateEnd.getDate() + "/" + (dateEnd.getMonth() + 1 < 10 ? "0" + (dateEnd.getMonth() + 1) : (dateEnd.getMonth() + 1)))
           this.workingTimes.push((this.end - this.start) <= 0 ? (24 - this.start) + this.end : (this.end - this.start))
           this.chartOptions = {

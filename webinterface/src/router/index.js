@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import WorkingTimes from '../views/WorkingTimes.vue'
 import UserInterface from '../views/User.vue'
 import Manager from '../views/Manager.vue'
+import Admin from '../views/Admin.vue'
 import WorkingTime from '../views/WorkingTime.vue'
 import Clock from '../views/Clock'
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/manager',
     name: 'manager',
     component: Manager
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin
   },
   {
     path: '/workingTime',

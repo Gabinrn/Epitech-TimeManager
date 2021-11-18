@@ -15,7 +15,8 @@ defmodule AppWeb.UsersView do
       id: users.id,
       username: users.username,
       email: users.email,
-      user_role: users.user_role
+      user_role: users.user_role,
+      hashed_password: users.hashed_password
     }
   end
 end

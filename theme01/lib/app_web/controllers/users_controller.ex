@@ -32,7 +32,7 @@ defmodule AppWeb.UsersController do
     render(conn, "show.json", users: users)
   end
 
-  def update(conn, %{"id" => id, "users" => users_params}) do
+  def update(conn, %{"id" => id, "user" => users_params}) do
     users = Profiles.get_users!(id)
 
     with {:ok, %Users{} = users} <- Profiles.update_users(users, users_params) do

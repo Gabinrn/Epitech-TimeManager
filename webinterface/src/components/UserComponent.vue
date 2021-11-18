@@ -1,28 +1,28 @@
 <template>
-    <div class="component">
-        <h1>User Component</h1>
-          <div id="usercontener">
-                
-                              <div class="card-body">
-                                    <h5 class="card-title"> Delete or put your new informations  </h5>
-                                    <p class="card-text"> Username : </p>
-                                    <p class="card-text">Email : </p>
-                                    <a class="btn btn-primary" type="button" @click="deleteUser(emailInput, passwordInput)">Delete </a>
-                                    <br><br>
-                                    <a class="btn btn-primary" type="button" @click="putUser(emailInput, passwordInput)">Modifier </a>
-                            <br><br>        
-                                <!-- Modifier  -->
-                                    <div class="form-group">
-                                        <label for="email" class="input-label"> Email </label>
-                                        <input type="email" v-model="emailInput" class="form-control" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Username" class="input-label"> Username </label>
-                                        <input type="txt" v-model="usernameInput" class="form-control" placeholder="username">
-                                    </div>
-                                </div>
+  <div class="component">
+    <h1>User Component</h1>
+    <div id="usercontener">
+
+      <div class="card-body">
+        <h5 class="card-title"> Delete or put your new informations </h5>
+        <p class="card-text"> Username : </p>
+        <p class="card-text">Email : </p>
+        <a class="btn btn-primary" type="button" @click="deleteUser(emailInput, passwordInput)">Delete </a>
+        <br><br>
+        <a class="btn btn-primary" type="button" @click="putUser(emailInput, passwordInput)">Modifier </a>
+        <br><br>
+        <!-- Modifier  -->
+        <div class="form-group">
+          <label for="email" class="input-label"> Email </label>
+          <input type="email" v-model="emailInput" class="form-control" placeholder="Email">
         </div>
+        <div class="form-group">
+          <label for="Username" class="input-label"> Username </label>
+          <input type="txt" v-model="usernameInput" class="form-control" placeholder="username">
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -54,8 +54,8 @@ export default {
       axios.get("http://localhost:4000/api/users",
           {
             params: {
-              email: "admin@admin2.com",
-              username: "adminadmin2"
+              email: "admin@admin.com",
+              username: "adminadmin"
             }
           })
           .then((response) => {
@@ -67,77 +67,79 @@ export default {
           });
     },
 
-/*    async postUser(emailInput, usernameInput) {
+    /*    async postUser(emailInput, usernameInput) {
 
-      await axios.post("http://localhost:4000/api/users",
-          {
-            users: {
-              email: emailInput,
-              username: usernameInput
-            }
-          })
-          .then(() => {
-            alert('reussi')
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    },
+          await axios.post("http://localhost:4000/api/users",
+              {
+                users: {
+                  email: emailInput,
+                  username: usernameInput
+                }
+              })
+              .then(() => {
+                alert('reussi')
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        },
 
-    async deleteUser(emailInput, usernameInput) {
+        async deleteUser(emailInput, usernameInput) {
 
-      await axios.delete("http://localhost:4000/api/users/" + this.user.id,
-          {
-            users: {
-              email: emailInput,
-              username: usernameInput
-            }
-          })
+          await axios.delete("http://localhost:4000/api/users/" + this.user.id,
+              {
+                users: {
+                  email: emailInput,
+                  username: usernameInput
+                }
+              })
 
-          .then(() => {
-            alert('reussi')
-          })
-          .catch(function (error) {
-            console.log(error);
-            alert(error)
-          });
-    },
+              .then(() => {
+                alert('reussi')
+              })
+              .catch(function (error) {
+                console.log(error);
+                alert(error)
+              });
+        },
 
-    async putUser(emailInput, usernameInput) {
+        async putUser(emailInput, usernameInput) {
 
-      await axios.put("http://localhost:4000/api/users/" + this.user.id,
-          {
-            users: {
-              email: emailInput,
-              username: usernameInput
-            }
-          })
-          .then(() => {
-            alert('reussi')
-          })
-          .catch(function (error) {
-            console.log(error);
-            alert(error);
-          });
-    },*/
+          await axios.put("http://localhost:4000/api/users/" + this.user.id,
+              {
+                users: {
+                  email: emailInput,
+                  username: usernameInput
+                }
+              })
+              .then(() => {
+                alert('reussi')
+              })
+              .catch(function (error) {
+                console.log(error);
+                alert(error);
+              });
+        },*/
   },
 }
 </script>
 
 <style>
-.userTable{
+.userTable {
   margin-top: 15%;
   margin-left: 20%;
 }
 
-.component{
-    justify-content: flex-end;
-    background-color: rgb(207, 103, 103);
-    flex-direction: column;
-    border-radius: 10px;
-    margin-right: 180px;
-    height: 100%;
+.component {
+  justify-content: flex-end;
+  background-color: transparent;
+  flex-direction: column;
+  padding: 8%;
+  border-radius: 10px;
+  margin-right: 180px;
+  height: 100%;
 }
+
 .widget {
   margin: 0;
   height: unset;

@@ -10,12 +10,9 @@
         <div class="nav nav-pills flex-column mb-auto sidebar">
           <b-sidebar id="sidebar-variant" no-header-close="true" visible="true" bg-variant="dark" text-variant="light">
             <div class="px-3 py-2">
-              <h1 class="title">Manager</h1>
+              <h1 class="title">Admin</h1>
               <div class="button-group">
-                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'clockmanager'">ClockTime</button>
-                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'workingtimes'">Working Times</button>
-                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'dayoff'">Day Off</button>
-                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'user'">User Info</button>
+                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'user'">Users Info</button>
                 <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'FAQcomponent'">FAQ</button>
               </div>
             </div>
@@ -31,30 +28,22 @@
 
 <script>
 import FAQComponent from '../components/FAQcomponent.vue'
-import DayoffComponent from '../components/DayOff.vue'
 import Header from '../components/Header.vue'
-import UserComponent from '../components/UserComponent.vue'
-import WorkingTimes from '../components/WorkingTimes.vue'
-import ClockManager from '../components/ClockManager.vue'
-import ContactMananger from '../components/ContactManager.vue'
+import userManager from '../components/userManagerComponent.vue'
 
 export default {
-  name: "Manager",
+  name: "Admin",
   beforeCreate() {
     document.querySelector('body').setAttribute('style', 'background:#BEB1B1')
   },
   components: {
     Header,
-    'user': UserComponent,
-    'workingtimes': WorkingTimes,
-    'clockmanager': ClockManager,
+    'user': userManager,
     'FAQcomponent': FAQComponent,
-    'dayoff': DayoffComponent,
-    'contactMananger': ContactMananger
   },
   data() {
     return {
-      component: 'clockmanager'
+      component: 'user'
     }
   }
 }

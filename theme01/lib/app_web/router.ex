@@ -34,7 +34,7 @@ defmodule AppWeb.Router do
   end
 
   scope "/api", AppWeb do
-    pipe_through [:api, :authentifie]
+    pipe_through [:api]
 
     get "/allUsers", UsersController, :indexAll
     resources "/users", UsersController, except: [:new, :edit]

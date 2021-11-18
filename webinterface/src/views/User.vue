@@ -7,18 +7,19 @@
         </div>
 
         <div class="row" style="flex-wrap: nowrap; overflow:hidden" >
-            <div class="sidebar">
-                <div class="nav nav-pills flex-column mb-auto sidebar">
-                    <h1>menu</h1>
-                    <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'user'">User</button>
-                    <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'clockmanager'">Clock Mananger</button>
-                    <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'workingtimes'">Working Times</button>
-                    <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'dayoff'">Day Off</button>
-                    <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'contactMananger'">Contact Manager</button>
-                    <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'FAQcomponent'">FAQ</button>
-                </div>
+          <b-sidebar id="sidebar-variant" no-header-close="true" visible="true" bg-variant="dark" text-variant="light">
+            <div class="px-3 py-2">
+              <h1 class="title">User</h1>
+              <div class="button-group">
+                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'clockmanager'">ClockTime</button>
+                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'workingtimes'">Working Times</button>
+                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'dayoff'">Day Off</button>
+                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'user'">User Info</button>
+                <button type="button" class="btn btn-outline-primary button" v-on:click="component = 'FAQcomponent'">FAQ</button>
+              </div>
             </div>
-            <div style="margin-top: 40px">
+          </b-sidebar>
+            <div style="margin-top: 40px; margin-left:10% ">
                 <component v-bind:is="component"></component>
             </div>
         </div>
@@ -36,6 +37,9 @@ import ContactMananger from '../components/ContactManager.vue'
 
 export default {
     name: "UserInterface",
+  beforeCreate() {
+    document.querySelector('body').setAttribute('style', 'background:#BEB1B1')
+  },
     components: {
         Header,
         'user': UserComponent,

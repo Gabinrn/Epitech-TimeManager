@@ -1,10 +1,10 @@
 <template>
   <div >
-    <select v-model="select" @change=getWorkingTime()>
+    <b-form-select class="selectUser" v-model="select" @change=getWorkingTime()>
       <option v-for="option in options" v-bind:value="option.id" v-bind:key="option">
         {{ option.username }}
       </option>
-    </select>
+    </b-form-select>
     <div class="workingTime">
       <md-table md-card class="table">
         <md-table-toolbar>
@@ -22,8 +22,8 @@
 
         <md-table-row slot="md-table-row" v-for="workingTime in workingTimes" :key="workingTime.id">
           <md-table-cell md-label="start" md-sort-by="start" class="align-middle">{{ workingTime.start }}</md-table-cell>
-          <md-table-cell md-label="end" md-sort-by="end">{{ workingTime.end }}</md-table-cell>
-          <md-table-cell>
+          <md-table-cell md-label="end" md-sort-by="end" class="align-middle">{{ workingTime.end }}</md-table-cell>
+          <md-table-cell class="align-middle">
             <md-button class="md-fab md-mini md-primary" @click="setModal(workingTime)">
               <md-icon>edit</md-icon>
             </md-button>
@@ -204,7 +204,6 @@ export default {
           })
     },
 
-
     handleUpdate() {
       const requestOptions = {
         method: 'PUT',
@@ -230,6 +229,12 @@ export default {
 };
 </script>
 <style>
+.selectUser{
+  width: 10% !important;
+  display: flex !important;
+  margin-left: 10% !important;
+}
+
     .WorkingComponent {
     justify-content: flex-end;
     background-color: rgb(103, 103, 180);

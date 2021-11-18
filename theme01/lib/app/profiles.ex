@@ -71,8 +71,8 @@ defmodule App.Profiles do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_users(%Users{} = users, attrs) do
-    users
+  def update_users(%Users{} = user, attrs) do
+    user
     |> Users.changeset(attrs)
     |> Repo.update()
   end

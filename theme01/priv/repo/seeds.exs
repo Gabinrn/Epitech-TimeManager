@@ -12,8 +12,10 @@
 alias App.Repo
 alias App.Profiles.Users
 
-Repo.insert! %Users{email: "user1@test.com", username: "U1", password: "password1", user_role: "admin"}
+Repo.insert! %Users{email: "michel@michel.com", username: "Michel D", password: "test", user_role: "admin"}
 
-Repo.insert! %Users{email: "user2@test.com", username: "U2", password: "password2", user_role: "manager"}
+Repo.insert! %Users{email: "george@george.com", username: "George I", password: "test", user_role: "manager"}
 
-Repo.insert! %Users{email: "user3@test.fr", username: "U3", password: "password3", user_role: "employee"}
+Repo.insert! %Users{email: "paul@paul.fr", username: "Paul K", password: "test", user_role: "employee"}
+
+Repo.insert! %Users{email: "jean@jean.fr", username: "Jean P", password: "test", user_role: "employee"}
